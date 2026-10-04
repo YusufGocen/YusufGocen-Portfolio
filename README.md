@@ -10,22 +10,6 @@ React, TypeScript ve Vite ile geliştirilen kişisel portfolio sitesi. Türkçe 
 - Filtrelenebilir projeler ve proje detayları
 - İletişim, sosyal bağlantılar ve CV
 
-## Yerel çalıştırma
-
-Node.js 22.12 veya üzeri gerekir.
-
-```bash
-npm ci
-npm run dev
-```
-
-## Production derlemesi
-
-```bash
-npm run build
-npm run preview
-```
-
 Yayınlanmaya hazır dosyalar `dist/` klasöründe oluşturulur.
 
 ## Proje yapısı
@@ -37,16 +21,4 @@ Yayınlanmaya hazır dosyalar `dist/` klasöründe oluşturulur.
 - `src/styles/`: genel stiller
 - `public/`: görseller, teknoloji logoları ve CV
 
-## Yayınlama
 
-Vercel veya Cloudflare Pages üzerinde GitHub deposundan yayınlanabilir.
-
-| Ayar | Değer |
-| --- | --- |
-| Framework | Vite |
-| Build command | `npm run build` |
-| Output directory | `dist` |
-| Root directory | Depo kökü |
-| Node.js | 22.12+ |
-
-`node_modules`, derleme çıktıları, yerel önizlemeler, yayın ZIP dosyaları ve deneme yedekleri Git deposuna dahil edilmez. Bağımlılıkların aynı sürümlerle kurulması için `package-lock.json` depoda tutulur.
