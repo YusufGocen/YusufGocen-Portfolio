@@ -2,6 +2,12 @@
 
 React, TypeScript ve Vite ile geliştirilen kişisel portfolio sitesi. Türkçe ve İngilizce içerik, farklı ekran boyutlarına uyumlu tasarım ve proje detay galerileri içerir.
 
+
+
+
+🌐 **Canlı site:** [yusufgocen-portfolio.vercel.app](https://yusufgocen-portfolio.vercel.app)
+
+
 ## Bölümler
 
 - Giriş ve Hakkımda
@@ -11,6 +17,10 @@ React, TypeScript ve Vite ile geliştirilen kişisel portfolio sitesi. Türkçe 
 - İletişim, sosyal bağlantılar ve CV
 
 Yayınlanmaya hazır dosyalar `dist/` klasöründe oluşturulur.
+
+## Kullanılan teknolojiler
+
+React · TypeScript · Vite · CSS
 
 ## Proje yapısı
 
