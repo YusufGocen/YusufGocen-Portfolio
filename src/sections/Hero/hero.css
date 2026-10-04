@@ -1,0 +1,455 @@
+.hero-stage {
+  height: 150svh;
+  position: relative;
+  --scroll-progress: 0;
+  background: #e5edf8;
+}
+.hero {
+  height: 100svh;
+  min-height: 600px;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
+  color: #f6f8fc;
+  background: #071224;
+  transform: scale(calc(1 - var(--scroll-progress) * 0.045));
+  border-radius: calc(var(--scroll-progress) * 30px);
+  transform-origin: center center;
+  isolation: isolate;
+}
+.hero-art {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/earth-moon-reference-sharp.png');
+  background-size: cover;
+  background-position: center;
+  filter: none;
+  z-index: -3;
+  transform: none;
+  will-change: transform;
+}
+.hero-wash {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(0deg, rgba(39, 98, 176, 0.42), transparent 28%),
+    linear-gradient(90deg, rgba(3, 12, 25, 0.12), transparent 60%);
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 34px var(--space);
+  gap: 24px;
+}
+.wordmark {
+  font-size: 20px;
+  letter-spacing: -0.035em;
+}
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  font-size: 15px;
+}
+.navigation a {
+  transition: color 0.2s;
+}
+.navigation a:hover {
+  color: #9bcaff;
+}
+.nav-pending {
+  opacity: 0.65;
+  cursor: default;
+}
+.navigation a:last-child {
+  margin-left: 8px;
+}
+.menu-toggle {
+  display: none;
+}
+.hero-copy {
+  position: absolute;
+  left: var(--space);
+  top: 36%;
+  max-width: 65%;
+  animation: hero-enter 1s ease both;
+}
+.hero-copy h1 {
+  font-size: clamp(56px, 6vw, 108px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 0 0 16px;
+}
+.hero-role {
+  font-size: clamp(34px, 4.4vw, 78px);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: #b4d5fa;
+  background: linear-gradient(
+    100deg,
+    #c4e0ff 0%,
+    #f2f8ff 28%,
+    #e6f1ff 44%,
+    #b8d5fa 65%,
+    #96bdf0 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;
+  margin: 0;
+}
+.hero-description {
+  font-size: clamp(17px, 1.75vw, 28px);
+  color: #9fbde0;
+  margin: 28px 0 0;
+  line-height: 1.5;
+  max-width: 620px;
+}
+.hero-meta {
+  position: absolute;
+  bottom: 18px;
+  left: var(--space);
+  right: var(--space);
+  border-top: 1px solid #9bbfe33b;
+  padding-top: 26px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: #adc8e8;
+  font-size: 14px;
+}
+.hero-stack i {
+  font-style: normal;
+  padding: 0 12px;
+  opacity: 0.65;
+}
+.scroll-cue {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.scroll-cue span {
+  font-size: 24px;
+  transition: transform 0.2s;
+}
+.scroll-cue:hover span {
+  transform: translateY(4px);
+}
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (min-width: 1700px) {
+  .hero-art {
+    background-position: center 45%;
+  }
+}
+@media (max-width: 900px) {
+  .navigation {
+    gap: 18px;
+  }
+  .hero-copy {
+    max-width: 80%;
+    top: 40%;
+  }
+  .hero-copy h1 {
+    font-size: 64px;
+  }
+  .hero-role {
+    font-size: 44px;
+  }
+  .hero-art {
+    background-position: 58% center;
+  }
+  .hero-wash {
+    background:
+      linear-gradient(90deg, rgba(4, 13, 28, 0.65), transparent),
+      linear-gradient(0deg, #143a6c99, transparent 35%);
+  }
+  .hero-stack {
+    font-size: 12px;
+  }
+  .hero-stack i {
+    padding: 0 5px;
+  }
+}
+@media (max-width: 600px) {
+  .hero-stage {
+    height: 135svh;
+  }
+  .hero {
+    min-height: 650px;
+  }
+  .header {
+    padding-top: 25px;
+  }
+  .wordmark {
+    font-size: 18px;
+  }
+  .menu-toggle {
+    display: block;
+    background: none;
+    border: 0;
+    color: #f6f8fc;
+    padding: 8px 0;
+    font-size: 14px;
+  }
+  .navigation {
+    display: none;
+  }
+  .navigation.is-open {
+    display: flex;
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    top: 74px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 14px 22px;
+    background: #0b1c36f5;
+    border: 1px solid #9bcaff38;
+    border-radius: 16px;
+    z-index: 5;
+    backdrop-filter: blur(16px);
+  }
+  .navigation a,
+  .nav-pending {
+    padding: 13px 0;
+  }
+  .navigation a:last-child {
+    margin-left: 0;
+  }
+  .hero-art {
+    background-size: auto 76%;
+    background-repeat: no-repeat;
+    background-position: 73% 12%;
+    opacity: 0.85;
+  }
+  .hero-wash {
+    background: linear-gradient(0deg, #143969 0%, #071224ed 35%, #07122400 70%);
+  }
+  .hero-copy {
+    top: auto;
+    bottom: 192px;
+    max-width: calc(100% - 48px);
+  }
+  .hero-copy h1 {
+    font-size: clamp(43px, 11vw, 66px);
+    margin-bottom: 12px;
+  }
+  .hero-role {
+    font-size: clamp(28px, 7vw, 42px);
+  }
+  .hero-description {
+    font-size: 16px;
+    margin-top: 20px;
+    max-width: 300px;
+  }
+  .hero-meta {
+    bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    font-size: 12px;
+    padding-top: 20px;
+  }
+  .hero-stack {
+    grid-row: 2;
+    grid-column: 1/-1;
+  }
+  .scroll-cue {
+    grid-column: 2;
+    grid-row: 1;
+    gap: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-stage {
+    height: 100svh;
+    min-height: 650px;
+  }
+  .hero {
+    transform: none;
+    border-radius: 0;
+  }
+  .hero-copy {
+    animation: none;
+  }
+  .hero-art {
+    transform: none;
+    will-change: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
+
+.navigation .nav-cv {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+}
+.nav-cv-arrow {
+  display: block;
+  flex-shrink: 0;
+}
+.language-switch {
+  display: flex;
+  gap: 6px;
+}
+.language-button {
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid #b4d3f56b;
+  border-radius: 0;
+  background: transparent;
+  color: #c4d9f1;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.language-button.is-active {
+  background: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+.language-button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+@media (max-width: 760px) {
+  .navigation .nav-cv {
+    margin-left: 0;
+  }
+  .language-switch {
+    padding: 12px 0;
+  }
+}
+
+/* Atmosferin parlak sağ kenarını hafifçe yumuşat. */
+.hero-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 80%,
+    #06132600 88%,
+    #06132612 100%
+  );
+}
+
+/* Referans arka planın kendi renk ve ışığını koru. */
+@media (min-width: 901px) {
+  .hero-wash {
+    background: none;
+  }
+}
+.hero-art::after {
+  background: none;
+}
+
+/* Gezegen ile alt bilgi çizgisi arasında daha fazla boşluk. */
+@media (min-width: 761px) {
+  .hero-meta {
+    bottom: 10px;
+    padding-top: 14px;
+  }
+}
+
+.hero-meta {
+  color: #edf4ff;
+}
+
+/* Tablet ve telefonlarda bağlantılar açılır menü içinde. */
+@media (max-width: 1100px) {
+  .header {
+    position: relative;
+    z-index: 5;
+  }
+  .header .menu-toggle {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    color: #fff;
+    background: #ffffff08;
+    border: 1px solid #ffffff55;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .header .navigation {
+    display: none;
+  }
+  .header .navigation.is-open {
+    display: flex;
+    position: absolute;
+    top: calc(100% - 12px);
+    left: var(--space);
+    right: var(--space);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 14px 22px;
+    background: #0b1c36f5;
+    border: 1px solid #9bcaff38;
+    border-radius: 14px;
+    box-shadow: 0 16px 40px #0005;
+    backdrop-filter: blur(16px);
+  }
+  .header .navigation a,
+  .header .nav-pending {
+    padding: 12px 0;
+  }
+  .header .navigation .nav-cv {
+    margin-left: 0;
+  }
+  .header .language-switch {
+    padding: 12px 0 4px;
+  }
+}
+
+@media (min-width: 901px) {
+  .hero-description {
+    max-width: none;
+    white-space: nowrap;
+  }
+}
+
+/* Gökyüzünde daha sakin parlaklık, alt bölümde koyu lacivert geçiş. */
+.hero-art::after {
+  background:
+    linear-gradient(0deg, #020d27a6 0%, #04132b45 18%, transparent 42%),
+    radial-gradient(ellipse at 71% 52%, transparent 0%, transparent 27%, #020c202e 55%, #020c203d 100%);
+}
+
+/* İlk tasarımın koyu tonları ile yeni görselin detayları arasında denge. */
+.hero-art {
+  filter: brightness(0.88) saturate(0.88) contrast(1.04);
+}
+.hero-art::after {
+  background:
+    linear-gradient(0deg, #020b22ba 0%, #03132f70 20%, transparent 48%),
+    radial-gradient(ellipse at 71% 52%, transparent 0%, transparent 25%, #020b244d 53%, #020b2466 100%);
+}

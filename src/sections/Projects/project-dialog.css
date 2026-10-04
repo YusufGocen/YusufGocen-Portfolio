@@ -1,0 +1,546 @@
+.project-dialog {
+  width: min(1100px, calc(100vw - 64px));
+  max-height: calc(100dvh - 64px);
+  padding: 0;
+  border: 1px solid #d9eafea0;
+  border-radius: 26px;
+  color: #10294d;
+  background: #f0f6fe;
+  box-shadow: 0 32px 100px #020f3455;
+  overflow: auto;
+}
+.project-dialog[open] {
+  animation: dialog-enter 0.25s ease-out;
+}
+.project-dialog::backdrop {
+  background: #031833a3;
+  backdrop-filter: blur(12px);
+}
+.project-dialog-layout {
+  display: grid;
+  grid-template-columns: 56% 44%;
+  min-height: 570px;
+}
+.project-dialog-close {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  z-index: 4;
+  border: 1px solid #a8c5e76b;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  background: #ffffffb3;
+  color: #16385f;
+  font-size: 24px;
+  cursor: pointer;
+}
+.project-dialog-gallery {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: radial-gradient(ellipse at 15% 0%, #e8f5ff, #b2d3f0 70%, #91bce9);
+}
+.gallery-focus {
+  background: radial-gradient(ellipse at 10% 0%, #fffdf9, #eee1cc 70%, #e1c6a2);
+}
+.gallery-tasks {
+  background: linear-gradient(135deg, #e8f1ff, #bbbdf0);
+}
+.gallery-fateful {
+  background: linear-gradient(150deg, #102b32, #146a7a);
+  color: #deefff;
+}
+.gallery-forecast {
+  background: linear-gradient(150deg, #0b2c51, #174d7d);
+  color: #deefff;
+}
+.dialog-gallery-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  opacity: 0.75;
+}
+.dialog-image-stage {
+  flex: 1;
+  min-height: 370px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 0;
+}
+.dialog-project-image {
+  max-width: 100%;
+  max-height: 390px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 12px 26px #1b426521;
+  animation: gallery-enter 0.25s ease;
+}
+.dialog-mobile-image {
+  max-height: 410px;
+  border: 5px solid #182735;
+  border-radius: 28px;
+}
+.dialog-cropped-phone {
+  height: 390px;
+  aspect-ratio: 383 / 786;
+  position: relative;
+  overflow: hidden;
+  border-radius: 23% / 11%;
+  filter: drop-shadow(0 14px 16px #18335035);
+  animation: gallery-enter 0.25s ease;
+}
+.dialog-cropped-phone img {
+  position: absolute;
+  width: 429.5%;
+  height: 100%;
+  max-width: none;
+}
+.dialog-gallery-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.dialog-gallery-controls button {
+  flex-shrink: 0;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 1px solid #88aad166;
+  background: #ffffff70;
+  color: #18395e;
+  font-size: 22px;
+  cursor: pointer;
+}
+.dialog-gallery-controls button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.dialog-gallery-controls > span {
+  font-size: 11px;
+  text-align: center;
+}
+.project-dialog-content {
+  padding: 72px 38px 30px;
+  display: flex;
+  flex-direction: column;
+}
+.project-dialog-content .project-category {
+  color: #3973bb;
+  font-size: 10px;
+}
+.project-dialog-content h2 {
+  font-size: clamp(27px, 3vw, 40px);
+  line-height: 1.18;
+  letter-spacing: -0.035em;
+  margin: 10px 0 32px;
+}
+.dialog-description > span,
+.dialog-technologies > span {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: #6683a7;
+}
+.dialog-description p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #496382;
+  margin: 12px 0 26px;
+}
+.dialog-technologies ul {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 26px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.dialog-technologies li {
+  font-size: 12px;
+  border: 1px solid #b6cce4;
+  border-radius: 24px;
+  padding: 8px 13px;
+  background: #e6effb;
+}
+.dialog-external-links {
+  display: flex;
+  gap: 24px;
+  font-size: 13px;
+  color: #246bb9;
+}
+.dialog-signature {
+  border-top: 1px solid #b3c9e15c;
+  padding-top: 18px;
+  margin-top: auto;
+  font-size: 8px;
+  letter-spacing: 0.13em;
+  color: #7691af;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.project-inspect {
+  border: 0;
+  padding: 5px 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 12px;
+  white-space: nowrap;
+  border-bottom: 1px solid currentColor;
+}
+.project-compact .project-inspect {
+  font-size: 0;
+  border: 1px solid #5278ab33;
+  background: #ffffff8c;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+}
+.project-compact .project-inspect span {
+  font-size: 18px;
+}
+.additional-project-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 32px;
+}
+.additional-project-list > span {
+  color: #deedff;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  margin-right: 15px;
+}
+.additional-project-list button {
+  color: #edf5ff;
+  cursor: pointer;
+  border: 0;
+  background: none;
+  border-bottom: 1px solid #b1d5ff;
+  padding: 8px 0;
+  font-size: 14px;
+  text-align: left;
+}
+.additional-project-list button span {
+  margin-left: 12px;
+}
+@keyframes dialog-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes gallery-enter {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (max-width: 760px) {
+  .project-dialog {
+    width: calc(100vw - 28px);
+    max-height: calc(100dvh - 28px);
+    border-radius: 20px;
+  }
+  .project-dialog-layout {
+    grid-template-columns: 1fr;
+  }
+  .project-dialog-gallery {
+    padding: 24px 20px;
+  }
+  .dialog-gallery-top {
+    padding-right: 40px;
+  }
+  .dialog-image-stage {
+    min-height: 270px;
+    padding: 18px 0;
+  }
+  .dialog-project-image {
+    max-height: 280px;
+  }
+  .dialog-cropped-phone {
+    height: 280px;
+  }
+  .project-dialog-content {
+    padding: 30px 24px;
+  }
+  .project-dialog-content h2 {
+    margin-bottom: 24px;
+  }
+  .dialog-signature {
+    margin-top: 28px;
+  }
+  .additional-project-list {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-dialog[open],
+  .dialog-project-image,
+  .dialog-cropped-phone {
+    animation: none;
+  }
+}
+
+.project-inspect {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  font-size: 15px;
+  padding: 6px 0;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  border-radius: 0;
+  background: none;
+  width: auto;
+  height: auto;
+}
+.project-inspect span {
+  font-size: 19px;
+}
+.project-compact .project-inspect {
+  display: inline-flex;
+  font-size: 11px;
+  gap: 7px;
+  padding: 5px 0;
+  width: auto;
+  height: auto;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  border-radius: 0;
+}
+.project-compact .project-inspect span {
+  font-size: 15px;
+}
+.project-compact .project-card-footer {
+  gap: 8px;
+}
+.project-compact .project-technologies {
+  max-width: 55%;
+}
+.project-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+@media (max-width: 1100px) {
+  .project-compact .project-card-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .project-compact .project-technologies {
+    max-width: 100%;
+  }
+}
+
+/* Mobil proje görselleri ile sağ alt bağlantı arasında nefes alanı. */
+.project-compact {
+  padding-bottom: 26px;
+}
+.project-compact .real-mobile-visual,
+.project-compact .task-montage-visual {
+  height: calc(100% - 74px);
+  top: 8px;
+}
+.project-compact .project-card-footer {
+  min-height: 30px;
+  align-items: flex-end;
+  flex-direction: row;
+}
+.project-compact .project-links {
+  margin-left: auto;
+}
+.project-compact .project-inspect {
+  font-size: 12px;
+  gap: 12px;
+  padding-bottom: 7px;
+}
+.project-compact .project-inspect span {
+  font-size: 18px;
+}
+@media (max-width: 1100px) {
+  .project-compact .project-technologies {
+    max-width: 48%;
+  }
+  .project-compact .project-inspect {
+    font-size: 10px;
+    gap: 7px;
+  }
+  .project-compact .project-inspect span {
+    font-size: 15px;
+  }
+}
+
+.is-filtered .project-compact {
+  min-height: 330px;
+}
+.is-filtered .real-project-phone,
+.is-filtered .task-montage-phone {
+  max-width: 110px;
+}
+
+/* Kaynak kod bağlantısını inceleme bağlantısıyla aynı ölçekte tut. */
+.project-compact .project-github {
+  font-size: 12px;
+  padding-bottom: 7px;
+  white-space: nowrap;
+}
+.project-compact .project-links {
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+@media (max-width: 1100px) {
+  .project-compact .project-github {
+    font-size: 10px;
+  }
+}
+
+/* Referanstaki kısa ok ve belirgin alt çizgi. */
+.project-links,
+.project-inspect,
+.additional-project-links button,
+.dialog-external-links a {
+  font-weight: 600;
+}
+.project-links a,
+.project-inspect,
+.project-compact .project-inspect {
+  border-bottom-width: 2px;
+}
+.project-link-arrow,
+.project-links .project-link-arrow,
+.project-inspect .project-link-arrow,
+.project-compact .project-inspect .project-link-arrow,
+.additional-project-links .project-link-arrow,
+.dialog-external-links .project-link-arrow {
+  position: relative;
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  flex: 0 0 13px;
+  font-size: 0;
+  line-height: 0;
+  transform: none;
+}
+.project-link-arrow::before {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 2px;
+  top: 6px;
+  left: -1px;
+  background: currentColor;
+  transform: rotate(-45deg);
+  border-radius: 1px;
+}
+.project-link-arrow::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: 0;
+  right: 0;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+
+.dialog-weather-device.supplied-phone {
+  width: auto;
+  height: min(390px, 52vh);
+  max-width: none;
+  margin: 0;
+  transform: none;
+  animation: gallery-enter 0.25s ease;
+}
+
+.dialog-mobile-image.dialog-landscape-image {
+  max-height: min(390px, calc(100vw - 90px));
+  transform: rotate(-90deg);
+  animation: none;
+}
+
+.dialog-gallery-controls button {
+  display: grid;
+  place-items: center;
+  padding: 0;
+  line-height: 1;
+}
+.dialog-gallery-controls button svg {
+  display: block;
+}
+
+.dialog-feature-list {
+  margin: -10px 0 26px;
+  padding-left: 18px;
+  color: #496382;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.dialog-feature-list li + li {
+  margin-top: 8px;
+}
+
+@media (min-width: 761px) {
+  .project-dialog-condensed .project-dialog-layout {
+    grid-template-columns: 52% 48%;
+    min-height: 540px;
+  }
+  .project-dialog-condensed .project-dialog-content {
+    padding: 44px 30px 22px;
+  }
+  .project-dialog-condensed .project-dialog-content h2 {
+    font-size: 28px;
+    margin: 8px 0 16px;
+  }
+  .project-dialog-condensed .dialog-description p {
+    font-size: 13px;
+    line-height: 1.55;
+    margin: 8px 0 16px;
+  }
+  .project-dialog-condensed .dialog-feature-list {
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0 0 16px;
+  }
+  .project-dialog-condensed .dialog-feature-list li + li {
+    margin-top: 5px;
+  }
+  .project-dialog-condensed .dialog-technologies ul {
+    margin: 8px 0 16px;
+    gap: 6px;
+  }
+  .project-dialog-condensed .dialog-technologies li {
+    padding: 5px 9px;
+    font-size: 11px;
+  }
+  .project-dialog-condensed .dialog-signature {
+    padding-top: 12px;
+    margin-top: 18px;
+  }
+}
+
+.dialog-external-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.2;
+}
+.dialog-external-links .project-link-arrow {
+  vertical-align: middle;
+}
